@@ -1,3 +1,6 @@
+[![Waffle.io - Columns and their card count](https://badge.waffle.io/abdullahsumbal/HamzavsSumbal_Gift.svg?columns=all)](https://waffle.io/abdullahsumbal/HamzavsSumbal_Gift)
+
+
 # Why I created this application ?
 
 - I dont know
