@@ -3,7 +3,7 @@
 - I dont know
 
 ## Application features
--   Waffle integration (task management tool)
+-   Waffle integration (Task Management tool)
 
 ## License and Usage :
 
