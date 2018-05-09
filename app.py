@@ -1,7 +1,9 @@
 from flask import Flask, render_template, flash, redirect, url_for, session, request
 from flask_mysqldb import MySQL
-from wtforms import Form, StringField, TextAreaField, validators, DateTimeField, IntegerField
+from wtforms import Form, StringField, TextAreaField, validators, IntegerField
+from wtforms.fields.html5 import DateTimeField
 from functools import wraps
+from datetime import datetime
 
 app = Flask(__name__)
 app.secret_key = 'hamzaelahisquash'
@@ -84,7 +86,9 @@ def is_logged_in(f):
 @app.route('/register', methods=['Get', 'POST'])
 @is_logged_in
 def register():
+
     form = RegisterForm(request.form)
+    form.datetime.data = datetime.now()
     if request.method == 'POST' and form.validate():
         opponent = form.opponent.data
         date_time = form.datetime.data
