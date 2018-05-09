@@ -1,4 +1,50 @@
 {% extends 'layout.html' %}
 {% block body %}
-Home
+<div class="jumbotron">
+  <h1 class="display-4">Hamza's Squash Log</h1>
+  <p class="lead">Because I play way to much squash</p>
+  <hr class="my-4">
+    {% if session.logged_in %}
+      <p>Click Here to add more games</p>
+      <a class="btn btn-primary btn-lg" href="/register" role="button">Add Game</a>
+    {% endif %}
+</div>
+      <div class="card">
+    <div class="card-header" data-background-color="orange">
+      <h4 class="title">Squash Games</h4>
+    </div>
+    <div class="container-fluid">
+      <table class="table table-hover text-centered">
+          <tr>
+            <th>Game id</th>
+            <th>Opponent</th>
+            <th>Hamza Score</th>
+            <th>Opponent Score</th>
+            <th>Date & Time</th>
+              <th></th>
+              <th></th>
+          </tr>
+      <tbody>
+        {% for game in games %}
+            <tr>
+                <td><a href="game/{{game.idgames}}">{{game.idgames}}</a></td>
+                <td>{{game.opponent}}</td>
+                <td>{{game.date}}</td>
+                <td>{{game.score_hamza}}</td>
+                <td>{{game.score_opponent}}</td>
+                <td><a href="edit_game/{{game.idgames}}" class="btn btn-primary pull-right">Edit</a></td>
+                <td>
+                  <form action="{{url_for('delete_game', id=game.idgames)}}" method="post">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="submit" value="Delete" class="btn btn-danger">
+                  </form>
+                </td>
+            </tr>
+             </tbody>
+        {% endfor %}
+
+        <tbody id="checklist_table_body"></tbody>
+      </table>
+    </div>
+  </div>
 {% endblock %}
