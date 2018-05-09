@@ -54,7 +54,7 @@ def game(id):
     cur = mysql.connection.cursor()
 
     # Get user by username
-    result = cur.execute("SELECT comment FROM squash_games WHERE idgames = %s", (id))
+    result = cur.execute("SELECT comment FROM squash_games WHERE idgames = %s", [id])
     if result:
         data = cur.fetchone()
         return render_template('game.html', comment=data['comment'])
