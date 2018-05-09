@@ -4,6 +4,7 @@ from wtforms import Form, StringField, TextAreaField, validators, DateTimeField,
 from functools import wraps
 
 app = Flask(__name__)
+app.secret_key = 'hamzaelahisquash'
 
 # Config MySQL
 app.config['MYSQL_HOST'] = 'den1.mysql4.gear.host'
@@ -215,5 +216,5 @@ def logout():
 
 
 if __name__ == '__main__':
-    app.secret_key = 'hamzaelahisquash'
+
     app.run(debug=True)
