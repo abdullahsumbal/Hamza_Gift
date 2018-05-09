@@ -55,11 +55,11 @@ def game(id):
 
     # Get user by username
     result = cur.execute("SELECT comment FROM squash_games WHERE idgames = %s", [id])
-    if result:
+    if result > 0:
         data = cur.fetchone()
         return render_template('game.html', comment=data['comment'])
     else:
-        return render_template('game.html', comment="")
+        return render_template('game.html', comment="No Comment found")
 
 
 # Register Form Class

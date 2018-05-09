@@ -31,9 +31,9 @@
             <tr>
                 <td><a href="game/{{game.idgames}}" class="text-success">{{game.idgames}}</a></td>
                 <td>{{game.opponent}}</td>
-                <td>{{game.date}}</td>
                 <td>{{game.score_hamza}}</td>
                 <td>{{game.score_opponent}}</td>
+                <td>{{game.date}}</td>
                 {% if session.logged_in %}
                 <td><a href="edit_game/{{game.idgames}}" class="btn btn-primary pull-right">Edit</a></td>
                 <td>
