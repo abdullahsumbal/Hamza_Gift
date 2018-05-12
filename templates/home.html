@@ -9,46 +9,53 @@
       <a class="btn btn-success btn-lg " href="/register" role="button">Add Game</a>
     {% endif %}
 </div>
-      <div class="card">
-    <div class="card-header bg-success" data-background-color="orange">
-      <h4 class="title"><p class="text-light">Squash Games</p></h4>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+              <div class="card-header bg-success" data-background-color="orange">
+                    <h4 class="title"><p class="text-light">Squash Games</p></h4>
+              </div>
+            </div>
+            <div class="card-content">
+                <table class="table table-hover text-centered">
+                  <tr>
+                    <th>Game id</th>
+                    <th>Opponent</th>
+                    <th>Hamza Score</th>
+                    <th>Opponent Score</th>
+                    <th>Date & Time</th>
+                      {% if session.logged_in %}
+                      <th></th>
+                      <th></th>
+                      {% endif %}
+                  </tr>
+                    <tbody>
+                        {% for game in games %}
+                        <tr>
+                            <td><a href="game/{{game.idgames}}" class="text-success">{{game.idgames}}</a></td>
+                            <td>{{game.opponent}}</td>
+                            <td>{{game.score_hamza}}</td>
+                            <td>{{game.score_opponent}}</td>
+                            <td>{{game.date}}</td>
+                            {% if session.logged_in %}
+                            <td><a href="edit_game/{{game.idgames}}" class="btn btn-primary pull-right">Edit</a></td>
+                            <td>
+                              <form action="{{url_for('delete_game', id=game.idgames)}}" method="post">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="submit" value="Delete" class="btn btn-danger">
+                              </form>
+                            </td>
+                            {% endif %}
+                        </tr>
+                     </tbody>
+                {% endfor %}
+              </table>
+        </div>
+        <div class="card-footer">
+            <a class="btn btn-success btn-lg" href="/download" role="button">Download</a>
+        </div>
+      </div>
     </div>
-    <div class="container-fluid">
-      <table class="table table-hover text-centered">
-          <tr>
-            <th>Game id</th>
-            <th>Opponent</th>
-            <th>Hamza Score</th>
-            <th>Opponent Score</th>
-            <th>Date & Time</th>
-              {% if session.logged_in %}
-              <th></th>
-              <th></th>
-              {% endif %}
-          </tr>
-      <tbody>
-        {% for game in games %}
-            <tr>
-                <td><a href="game/{{game.idgames}}" class="text-success">{{game.idgames}}</a></td>
-                <td>{{game.opponent}}</td>
-                <td>{{game.score_hamza}}</td>
-                <td>{{game.score_opponent}}</td>
-                <td>{{game.date}}</td>
-                {% if session.logged_in %}
-                <td><a href="edit_game/{{game.idgames}}" class="btn btn-primary pull-right">Edit</a></td>
-                <td>
-                  <form action="{{url_for('delete_game', id=game.idgames)}}" method="post">
-                    <input type="hidden" name="_method" value="DELETE">
-                    <input type="submit" value="Delete" class="btn btn-danger">
-                  </form>
-                </td>
-                {% endif %}
-            </tr>
-             </tbody>
-        {% endfor %}
-
-        <tbody id="checklist_table_body"></tbody>
-      </table>
-    </div>
-  </div>
+</div>
 {% endblock %}
