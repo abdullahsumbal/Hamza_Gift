@@ -1,9 +1,10 @@
-from flask import Flask, render_template, flash, redirect, url_for, session, request
+from flask import Flask, render_template, flash, redirect, url_for, session, request, make_response
 from flask_mysqldb import MySQL
 from wtforms import Form, StringField, TextAreaField, validators, IntegerField
 from wtforms.fields.html5 import DateTimeField
 from functools import wraps
 from datetime import datetime
+import json
 
 app = Flask(__name__)
 app.secret_key = 'hamzaelahisquash'
@@ -216,6 +217,35 @@ def login():
 def logout():
     session.clear()
     flash('You are  now logged out', 'success')
+    return redirect(url_for('home'))
+
+
+@app.route('/download')
+def download():
+    # Create cursor
+    cur = mysql.connection.cursor()
+
+    # Execute
+    result = cur.execute("SELECT * FROM squash_games")
+    if result > 0:
+        # Get stored hash
+        all_games = cur.fetchall()
+        csv = ""
+        for game in all_games:
+            for key, value in game.items():
+                csv += "{},".format(value)
+            csv += '\n'
+        flash('Downloading Started', 'success')
+        response = make_response(csv)
+        cd = 'attachment; filename=data.csv'
+        response.headers['Content-Disposition'] = cd
+        response.mimetype = 'text/csv'
+
+        return response
+    else:
+        flash('Nothing to Download', 'danger')
+    # Close connection
+    cur.close()
     return redirect(url_for('home'))
 
 
