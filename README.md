@@ -11,13 +11,13 @@
 -   Add, edit and delete games   
 -   Login Authorization
 
-## Application features
--   Squash game tracking
--   Game statistics
--   Add, edit and delete games   
--   Login Authorization
+## Tools used in development
+-   GearHost (hosting MySQL sever)
+-   Waffle.io (Task tracking)
+-   Heroku (Web application hosting)
+-   GitHub (Version Control)
+-   Brain
 
 ## License and Usage :
 
 This project is completely open-source and free-to-use. But you will need to mention about its author.
-Also there are some exceptions where this project can be used, please read Privacy Policy [here](http://parthsarthee.com/ops-privacy-policy)
