@@ -26,7 +26,31 @@ def index():
 
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    # Create cursor
+    cur = mysql.connection.cursor()
+
+    # Get win games
+    cur.execute("SELECT count(*) AS count FROM squash_games WHERE score_hamza > score_opponent")
+
+    # Get all win in dict format
+    win = cur.fetchone()['count']
+
+    # Get draw games
+    cur.execute("SELECT count(*) AS count FROM squash_games WHERE score_hamza = score_opponent")
+
+    # Get draw in dict format
+    draw = cur.fetchone()['count']
+
+    # Get lost games
+    cur.execute("SELECT count(*) AS count FROM squash_games WHERE score_hamza < score_opponent")
+
+    # Get all lost in dict format
+    loss = cur.fetchone()['count']
+
+    # Close connection
+    cur.close()
+
+    return render_template('about.html', win=win, loss=loss, draw=draw)
 
 
 @app.route('/home')

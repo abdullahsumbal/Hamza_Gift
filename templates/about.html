@@ -5,6 +5,26 @@
   <p class="lead">My Name is Hamza and I love squash!</p>
   <hr class="my-4">
   <p>This website is dedicated to Hamza Elahi to keep track of his games.</p>
-  <a class="btn btn-success btn-lg " href="https://github.com/abdullahsumbal/HamzavsSumbal_Gift" role="button">Learn more</a>
+    {% if (win+loss+draw) > 1 %}
+       <p>Total Games {{win+loss+draw}}</p>
+    {% else %}
+        <p>Total Game {{win+loss+draw}}</p>
+    {% endif %}
+    {% if win > 1 %}
+       <p>Total Wins {{win}}</p>
+    {% else %}
+        <p>Total Win {{win}}</p>
+    {% endif %}
+    {% if loss > 1 %}
+       <p>Total Losses {{loss}}</p>
+    {% else %}
+        <p>Total Loss {{loss}}</p>
+    {% endif %}
+    {% if draw > 1 %}
+       <p>Total Draws {{draw}}</p>
+    {% else %}
+        <p>Total Draw {{draw}}</p>
+    {% endif %}
+  <a class="btn btn-success btn-lg " href="https://github.com/abdullahsumbal/Hamza_Gift" role="button">Learn more</a>
 </div>
 {% endblock %}
