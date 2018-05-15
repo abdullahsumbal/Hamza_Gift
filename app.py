@@ -67,7 +67,7 @@ def home():
     if result > 0:
         return render_template('home.html', games=games)
     else:
-        msg = "No Games Found"
+        msg = "No Games Found. Add Game"
         return render_template('home.html', msg=msg)
     # Close connection
     cur.close()
