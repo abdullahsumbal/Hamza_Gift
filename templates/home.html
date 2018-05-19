@@ -33,7 +33,7 @@
                     <tbody>
                         {% for game in games %}
                         <tr>
-                            <td><a href="game/{{game.idgames}}" class="text-success">{{game.idgames}}</a></td>
+                            <td>{% if session.logged_in %}<a href="game/{{game.idgames}}" class="text-success">{% endif %}{{game.idgames}}</a></td>
                             <td>{{game.opponent}}</td>
                             <td>{{game.score_hamza}}</td>
                             <td>{{game.score_opponent}}</td>
