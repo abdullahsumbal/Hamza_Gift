@@ -245,6 +245,7 @@ def logout():
 
 
 @app.route('/download')
+@is_logged_in
 def download():
     # Create cursor
     cur = mysql.connection.cursor()
