@@ -10,11 +10,11 @@ app = Flask(__name__)
 app.secret_key = 'hamzaelahisquash'
 
 # Config MySQL
-app.config['MYSQL_HOST'] = 'den1.mysql4.gear.host'
-app.config['MYSQL_USER'] = 'squash1'
-app.config['MYSQL_PASSWORD'] = '3-1squash'
-app.config['MYSQL_DB'] = 'squash1'
-app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
+app.config['MYSQL_HOST'] = ''
+app.config['MYSQL_USER'] = ''
+app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_DB'] = ''
+app.config['MYSQL_CURSORCLASS'] = ''
 # init MYSQL
 mysql = MySQL(app)
 
